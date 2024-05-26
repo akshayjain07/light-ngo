@@ -1,7 +1,8 @@
+// Navbar.jsx
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { styles } from "../styles"
+import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
 
@@ -31,7 +32,6 @@ const Navbar = () => {
         styles.paddingX
       } w-full flex items-center py-5 fixed top-0 z-20`}
       style={{ backgroundColor: scrolled ? '#343A40' : 'transparent' }}
-      // style={{ backgroundColor: scrolled ? 'transparent' : '#343A40' }}
     >
       <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
         <Link
@@ -45,7 +45,6 @@ const Navbar = () => {
           <img src={logo} alt='logo' className='w-12 h-12 object-contain' />
           <p className='text-white text-[18px] font-bold cursor-pointer flex '>
             LIGHT RAIPUR &nbsp;
-            {/* <span className='sm:block hidden'> | NGO</span> */}
           </p>
         </Link>
 
@@ -54,28 +53,25 @@ const Navbar = () => {
             <li
               key={nav.id}
               className={`${
-                active === nav.title ? " text-yellow-500 " : "text-white"
-              } hover:text-white text-[18px] font-medium cursor-pointer pt-1`}
+                active === nav.title ? "text-yellow-500" : "text-white"
+              } hover:text-yellow-500 text-[18px] font-medium cursor-pointer pt-1`}
               onClick={() => setActive(nav.title)}
             >
-              <a href={`/${nav.id}`}>{nav.title}</a>
-              {/* <a href={`#${nav.id}`}>{nav.title}</a> */}
+              <Link to={`/${nav.id}`}>{nav.title}</Link>
             </li>
           ))}
           
           <li key="donate">
             <button
               className={`${
-                active === "donate" ? "text-white" : "text-secondary"
-              } bg-yellow-400 hover:bg-yellow-600 text-black font-medium text-[18px] cursor-pointer py-1 px-4 rounded-lg`}
+                active === "donate" ? "bg-yellow-600 text-white" : "bg-yellow-400 text-black"
+              } hover:bg-yellow-500 font-medium text-[18px] cursor-pointer py-1 px-4 rounded-lg`}
               onClick={() => setActive("donate")}
             >
-              Donate
+              <Link to="/donate" className="block w-full h-full">Donate</Link>
             </button>
           </li>
-
         </ul>
-
 
         <div className='sm:hidden flex flex-1 justify-end items-center'>
           <img
@@ -102,19 +98,22 @@ const Navbar = () => {
                     setActive(nav.title);
                   }}
                 >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
+                  <Link to={`/${nav.id}`}>{nav.title}</Link>
                 </li>
               ))}
               <li key="donate">
-            <button
-              className={`${
-                active === "donate" ? "text-white" : "text-secondary"
-              } bg-yellow-400 hover:bg-yellow-600 text-black font-medium text-[18px] cursor-pointer py-1 px-4 rounded-lg`}
-              onClick={() => setActive("donate")}
-            >
-              Donate
-            </button>
-          </li>
+                <button
+                  className={`${
+                    active === "donate" ? "bg-yellow-600 text-white" : "bg-yellow-400 text-black"
+                  } hover:bg-yellow-500 font-medium text-[18px] cursor-pointer py-1 px-4 rounded-lg`}
+                  onClick={() => {
+                    setToggle(!toggle);
+                    setActive("donate");
+                  }}
+                >
+                  <Link to="/donate" className="block w-full h-full">Donate</Link>
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -124,4 +123,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
