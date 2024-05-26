@@ -1,6 +1,7 @@
 import React from 'react'
 // import herobg from "../assets"
 import { herobg } from '../assets'
+// import WebDTeam from './WebDTeam'
 
 const Hero = () => {
   return (
@@ -26,7 +27,7 @@ const Hero = () => {
    
     <div className="relative bg-white pt-10 pb-10">
       {/* Green background box */}
-      <div className="absolute inset-x-0 top-16 h-64 bg-green-400 z-0"></div>
+      <div className="absolute bottom-0 right-0 w-4/5 h-4/5 lg:h-64 bg-green-400 z-0"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row justify-center gap-8">
@@ -54,6 +55,7 @@ const Hero = () => {
         </div>
       </div>
     </div>
+    {/* <WebDTeam/> */}
     </>
 
     //  <section
